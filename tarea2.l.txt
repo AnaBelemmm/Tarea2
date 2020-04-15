@@ -1,0 +1,30 @@
+#include <stdio.h>
+
+enum{letteR = 12, fin};
+
+int numChar=0, numLetter= 0, numLine=0;
+%%
+letteR [\t\n]+
+fin \n
+%%
+{letter} {return letteR;}
+{fin}    {return fin;}
+%%
+
+int main(){
+	int token;
+	token=yylex();
+	
+	while(token){
+		switch(token){
+		 case letteR: numLetter++;
+		      chaR +=yyleng;
+		 break;
+		 case fin: numChar++;
+		      numLine++;
+		 break;
+		}
+	token= yylex();
+	}
+   printf("Char= %d    Letter= %d   Line= %d\n",numChar,numLetter,numLine);
+};
